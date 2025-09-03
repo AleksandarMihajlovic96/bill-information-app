@@ -1,0 +1,23 @@
+{
+  "common": {
+    "all": "All",
+    "other": "Other",
+    "english": "English",
+    "gaeilge": "Gaeilge"
+  },
+  "billsPage": {
+    "filterByBillType": "Filter by Bill Type",
+    "goverment": "Goverment",
+    "private": "Private",
+    "billDetails":"Bill Details",
+    "allBills":"All Bills",
+    "favourites":"Favourites",
+    "billsTableHeaders": {
+      "billNo": "Bill No",
+      "type": "Type",
+      "status": "Status",
+      "sponsor": "Sponsor",
+      "favourite": "Favourite"
+    }
+  }
+}

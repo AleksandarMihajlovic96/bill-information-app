@@ -1,0 +1,23 @@
+{
+  "common": {
+    "all": "Uile",
+    "other": "Eile",
+    "english": "Béarla",
+    "gaeilge": "Gaeilge"
+  },
+  "billsPage": {
+    "filterByBillType": "Scag de réir Cineál Bille",
+    "goverment": "Rialtas",
+    "private": "Príobháideach",
+    "billDetails": "Sonraí an Bhille",
+    "allBills": "Gach Bille",
+    "favourites": "Ceanáin",
+    "billsTableHeaders": {
+      "billNo": "Uimhir an Bhille",
+      "type": "Cineál",
+      "status": "Stádas",
+      "sponsor": "Urraitheoir",
+      "favourite": "Ceanán"
+    }
+  }
+}
