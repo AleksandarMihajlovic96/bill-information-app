@@ -6,12 +6,14 @@
     "gaeilge": "Gaeilge"
   },
   "billsPage": {
+    "billInformation":"Bill Information",
     "filterByBillType": "Filter by Bill Type",
     "goverment": "Goverment",
     "private": "Private",
     "billDetails":"Bill Details",
     "allBills":"All Bills",
     "favourites":"Favourites",
+    "errorFetchingBills":"Error fetching bills",
     "billsTableHeaders": {
       "billNo": "Bill No",
       "type": "Type",
