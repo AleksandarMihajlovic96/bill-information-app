@@ -11,7 +11,7 @@ export default [
   js.configs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: ['dist/**'],
+    ignores: ['dist/**', 'coverage'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -24,6 +24,11 @@ export default [
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
     },
+    settings: {
+      react: {
+        version: '^19.1.1',
+      },
+    },
     rules: {
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
@@ -33,13 +38,12 @@ export default [
     },
   },
   {
-    // 👇 Only applies to test files
     files: ['**/*.test.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
-        ...globals.jest, // ✅ adds jest, describe, it, expect, beforeEach...
+        ...globals.jest,
       },
     },
   },
-  prettier, // must be last
+  prettier,
 ];

@@ -18,7 +18,20 @@ The app supports:
 - **React Hooks** for state and logic management  
 - **React Testing Library & Jest** for Unit testing
 
----
+## 📂 Project Folder Structure
+
++ bill-information-app
+  + src
+    + @types - Global TypeScript type definitions and interfaces
+    + api - API client, endpoints, and data-fetching logic
+    + assets - Static files (images, fonts, icons, etc.)
+    + components - Components used across the app
+    + core - Core setup: translations, error handling, routing
+    + hooks - Custom React hooks for shared logic
+    + pages - Page-level components
+    + shared - Reusable UI components shared across the app
+    + theme - Styling, color pallets, typography
+    + utils - Utility functions (formatters, validators, mappers)
 
 ## ⚙️ Setup & Installation
 This project was created with **Vite** and uses **SWC** as the fast TypeScript/JS compiler.  
@@ -31,8 +44,6 @@ This project was created with **Vite** and uses **SWC** as the fast TypeScript/J
 2. **Install dependecies**
   ```bash
   npm install
-  # or
-  yarn install
   ```
 3. **Run the development server**
   ```bash

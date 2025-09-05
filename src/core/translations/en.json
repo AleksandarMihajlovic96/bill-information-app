@@ -11,9 +11,12 @@
     "goverment": "Goverment",
     "private": "Private",
     "billDetails":"Bill Details",
+    "public":"Public",
     "allBills":"All Bills",
     "favourites":"Favourites",
     "errorFetchingBills":"Error fetching bills",
+    "noBillsAvailable":"No bills available.",
+    "chooseDifferentFilter":"Choose different filter, no bills for this choice.",
     "billsTableHeaders": {
       "billNo": "Bill No",
       "type": "Type",

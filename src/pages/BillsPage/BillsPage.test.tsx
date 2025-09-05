@@ -10,7 +10,6 @@ jest.mock('react-i18next', () => ({
   }),
 }));
 
-// Mock BillTable to isolate BillsPage tests
 jest.mock('../../components/BillTable/BillTable', () => ({
   __esModule: true,
   default: ({ bills, favourites }: any) => (
@@ -20,7 +19,6 @@ jest.mock('../../components/BillTable/BillTable', () => ({
   ),
 }));
 
-// Mock useBills hook
 jest.mock('../../hooks/useBills', () => ({
   useBills: jest.fn(),
 }));

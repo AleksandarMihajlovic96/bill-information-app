@@ -24,6 +24,7 @@ import { DropdownFormControl } from './Dropdown.styles';
 const Dropdown: React.FC<DropdownProps> = ({ dropdownValue, setDropdownValue, data }) => {
   const { t } = useTranslation();
 
+  // Change dropdown value
   const handleDropdownChange = (value: string) => {
     setDropdownValue(value);
   };

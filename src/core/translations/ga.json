@@ -6,17 +6,22 @@
     "gaeilge": "Gaeilge"
   },
   "billsPage": {
+    "billInformation": "Eolas an Bhille",
     "filterByBillType": "Scag de réir Cineál Bille",
     "goverment": "Rialtas",
     "private": "Príobháideach",
     "billDetails": "Sonraí an Bhille",
+    "public": "Poiblí",
     "allBills": "Gach Bille",
     "favourites": "Ceanáin",
+    "errorFetchingBills": "Earráid agus billí á lódáil",
+    "noBillsAvailable": "Níl aon bhille ar fáil.",
+    "chooseDifferentFilter": "Roghnaigh scagaire eile, níl billí don rogha seo.",
     "billsTableHeaders": {
       "billNo": "Uimhir an Bhille",
       "type": "Cineál",
       "status": "Stádas",
-      "sponsor": "Urraitheoir",
+      "sponsor": "Urra",
       "favourite": "Ceanán"
     }
   }

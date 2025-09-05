@@ -10,6 +10,10 @@ export const FILTER_BY_TYPE: DropdownData[] = [
     name: 'billsPage.goverment',
   },
   {
+    value: 'Public',
+    name: 'billsPage.public',
+  },
+  {
     value: 'Private',
     name: 'billsPage.private',
   },

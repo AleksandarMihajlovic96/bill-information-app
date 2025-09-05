@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Tabs, Tab, CircularProgress } from '@mui/material';
 import BillTable from '../../components/BillTable/BillTable';
 import { useTranslation } from 'react-i18next';
@@ -32,6 +32,7 @@ const BillsPage: React.FC = () => {
 
   const { data: allBills = [], isLoading, isError } = useBills();
 
+  // Handle row click to dispatch API call to save/unsave favourite bill
   const handleToggleFavourite = (billNo: string) => {
     setFavourites((prev) =>
       prev.includes(billNo) ? prev.filter((id) => id !== billNo) : [...prev, billNo],
@@ -40,8 +41,12 @@ const BillsPage: React.FC = () => {
   };
 
   const bills = allBills;
-  const favouritedBills = allBills.filter((b) => favourites.includes(b.billNo));
+  const favouritedBills = useMemo(
+    () => allBills.filter((b) => favourites.includes(b.billNo)),
+    [allBills, favourites],
+  );
 
+  // Show Loading UI until bills are loaded
   if (isLoading) {
     return (
       <LoadingBox>
@@ -50,6 +55,7 @@ const BillsPage: React.FC = () => {
     );
   }
 
+  // Show Error UI if bills are not loaded
   if (isError) {
     return <ErrorBox>{t('billsPage.errorFetchingBills')}</ErrorBox>;
   }
@@ -76,7 +82,7 @@ const BillsPage: React.FC = () => {
             page={page}
             setPage={setPage}
             pageSize={pageSize}
-            totalCount={tab === 0 ? allBills.length : favouritedBills.length}
+            totalCount={allBills.length}
           />
         )}
         {tab === 1 && (
@@ -87,7 +93,7 @@ const BillsPage: React.FC = () => {
             page={page}
             setPage={setPage}
             pageSize={pageSize}
-            totalCount={tab === 1 ? allBills.length : favouritedBills.length}
+            totalCount={favouritedBills.length}
           />
         )}
       </BillTableContainer>

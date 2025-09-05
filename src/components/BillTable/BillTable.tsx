@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Table, TableBody, TableRow, Paper, IconButton, TablePagination } from '@mui/material';
 import { StarBorder } from '@mui/icons-material';
 import BillModal from '../BillModal/BillModal';
@@ -50,17 +50,24 @@ const BillTable: React.FC<BillTableProps> = ({
   const { t } = useTranslation();
 
   // Filter bills by type
-  const filteredBills = filterType ? bills.filter((bill) => bill.billType === filterType) : bills;
+  const filteredBills = useMemo(
+    () => (filterType ? bills.filter((bill) => bill.billType === filterType) : bills),
+    [bills, filterType],
+  );
 
   // Slice for pagination
-  const paginatedBills = filteredBills.slice(page * pageSize, page * pageSize + pageSize);
+  const paginatedBills = useMemo(
+    () => filteredBills.slice(page * pageSize, page * pageSize + pageSize),
+    [filteredBills, page, pageSize],
+  );
 
+  // Handle row click to callback dispatch API call to save/unsave favourite bill (onToggleFavourite)
   const handleTableCellClick = (
     e: React.MouseEvent<HTMLTableCellElement, MouseEvent>,
     bill: Bill,
   ) => {
     e.stopPropagation();
-    console.log(`Dispatching favourite for Bill ${bill.billNo}`);
+    console.log(`API request dispatched: toggling favourite for Bill ${bill.billNo}`);
     onToggleFavourite(bill.billNo);
   };
 
@@ -81,29 +88,41 @@ const BillTable: React.FC<BillTableProps> = ({
               </TableRow>
             </BillTableHead>
             <TableBody>
-              {paginatedBills.map((bill) => (
-                <BillTableRow key={bill.billNo} hover onClick={() => setSelectedBill(bill)}>
-                  <BillTableCell>{bill.billNo}</BillTableCell>
-                  <BillTableCell>{bill.billType}</BillTableCell>
-                  <BillTableCell>{bill.billStatus}</BillTableCell>
-                  <BillTableCell>{bill.sponsor}</BillTableCell>
-                  <BillTableCell
-                    onClick={(e) => {
-                      handleTableCellClick(e, bill);
-                    }}
-                  >
-                    <IconButton>
-                      {favourites.includes(bill.billNo) ? <ActiveStar /> : <StarBorder />}
-                    </IconButton>
+              {paginatedBills.length > 0 ? (
+                paginatedBills.map((bill) => (
+                  <BillTableRow key={bill.billNo} hover onClick={() => setSelectedBill(bill)}>
+                    <BillTableCell>{bill.billNo}</BillTableCell>
+                    <BillTableCell>{bill.billType}</BillTableCell>
+                    <BillTableCell>{bill.billStatus}</BillTableCell>
+                    <BillTableCell>{bill.sponsor}</BillTableCell>
+                    <BillTableCell
+                      onClick={(e) => {
+                        handleTableCellClick(e, bill);
+                      }}
+                    >
+                      <IconButton>
+                        {favourites.includes(bill.billNo) ? <ActiveStar /> : <StarBorder />}
+                      </IconButton>
+                    </BillTableCell>
+                  </BillTableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <BillTableCell colSpan={5} align="center">
+                    {t(
+                      filteredBills.length === 0 && filterType !== ''
+                        ? 'billsPage.chooseDifferentFilter'
+                        : 'billsPage.noBillsAvailable',
+                    )}
                   </BillTableCell>
-                </BillTableRow>
-              ))}
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </Paper>
         <TablePagination
           component="div"
-          count={totalCount}
+          count={filterType !== '' ? filteredBills.length : totalCount}
           page={page}
           onPageChange={(_, newPage) => setPage(newPage)}
           rowsPerPage={pageSize}

@@ -29,6 +29,7 @@ const Header: React.FC = () => {
     setAnchorEl(null);
   };
 
+  // Toggle between two languages, English and Gaeilge
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ga' : 'en';
     i18n.changeLanguage(newLang);

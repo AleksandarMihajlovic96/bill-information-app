@@ -8,7 +8,10 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 // Helper sponsors
-const sponsors = [{ sponsor: { as: { showAs: 'Alice' } } }, { sponsor: { as: { showAs: 'Bob' } } }];
+const sponsors = [
+  { sponsor: { as: { showAs: 'Test1' } } },
+  { sponsor: { as: { showAs: 'Test2' } } },
+];
 
 describe('mapApiBillToBill', () => {
   it('maps bill data correctly', () => {
@@ -29,7 +32,7 @@ describe('mapApiBillToBill', () => {
       billNo: '123',
       billType: 'Public',
       billStatus: 'Active',
-      sponsor: 'Alice,Bob',
+      sponsor: 'Test1,Test2',
       titleEn: 'English Title',
       titleGa: 'Gaelic Title',
     });
@@ -87,7 +90,7 @@ describe('getBills', () => {
         billNo: '456',
         billType: 'Private',
         billStatus: 'Passed',
-        sponsor: 'Alice,Bob',
+        sponsor: 'Test1,Test2',
         titleEn: 'Another Bill',
         titleGa: 'Bill Éile',
       },

@@ -10,7 +10,6 @@ jest.mock('react-i18next', () => ({
   }),
 }));
 
-// Mock BillModal to avoid rendering complexity
 jest.mock('../BillModal/BillModal', () => ({
   __esModule: true,
   default: ({ bill, onClose }: any) => (
@@ -149,7 +148,6 @@ describe('BillTable', () => {
       />,
     );
 
-    // Click on the bill row by billNo
     fireEvent.click(screen.getByText('123'));
 
     expect(screen.getByTestId('bill-modal')).toBeInTheDocument();
@@ -168,11 +166,9 @@ describe('BillTable', () => {
       />,
     );
 
-    // Open modal
     fireEvent.click(screen.getByText('123'));
     expect(screen.getByTestId('bill-modal')).toBeInTheDocument();
 
-    // Close modal via button in mocked BillModal
     fireEvent.click(screen.getByText('Close'));
 
     expect(screen.queryByTestId('bill-modal')).not.toBeInTheDocument();
