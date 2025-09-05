@@ -14,6 +14,28 @@ import {
   BillTableRow,
 } from './BillTable.style';
 
+/**
+ * BillTable
+ *
+ * React functional component that renders a paginated and filterable table of bills.
+ * - Displays bills with columns for bill number, type, status, sponsor, and favourite toggle.
+ * - Provides a dropdown to filter bills by type.
+ * - Implements pagination using MUI's TablePagination component.
+ * - Allows users to mark/unmark bills as favourites via a star icon.
+ * - Opens a `BillModal` dialog with detailed bill information when a row is clicked.
+ *
+ * Usage:
+ * <BillTable
+ *   bills={bills}
+ *   favourites={favourites}
+ *   onToggleFavourite={handleToggleFavourite}
+ *   totalCount={totalCount}
+ *   pageSize={10}
+ *   page={page}
+ *   setPage={setPage}
+ * />
+ */
+
 const BillTable: React.FC<BillTableProps> = ({
   bills,
   favourites,

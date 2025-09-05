@@ -3,6 +3,18 @@ import { Dialog, DialogTitle, DialogContent, Tabs, Tab, Box, Typography } from '
 import { useTranslation } from 'react-i18next';
 import type { BillModalProps } from './BillModal.types';
 
+/**
+ * BillModal
+ *
+ * React functional component that displays a modal dialog with bill details.
+ * - Opens as a dialog (`MUI Dialog`) when triggered.
+ * - Provides two tabs (English and Gaeilge) for switching between bill titles.
+ * - Receives the `bill` object and displays its localized title based on the selected tab.
+ * - Closes when the `onClose` callback is triggered.
+ *
+ * Usage:
+ * <BillModal bill={bill} onClose={handleClose} />
+ */
 const BillModal: React.FC<BillModalProps> = ({ bill, onClose }) => {
   const [tab, setTab] = useState(0);
   const { t } = useTranslation();

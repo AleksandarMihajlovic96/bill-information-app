@@ -3,6 +3,19 @@ import { IconButton, Avatar, Menu, MenuItem, Typography, Switch } from '@mui/mat
 import { useTranslation } from 'react-i18next';
 import { HeaderAppBar, HeaderProfileMenu, HeaderTitle, HeaderToolbar } from './Header.styles';
 
+/**
+ * Header
+ *
+ * React functional component that renders the application header bar.
+ * - Displays the application title in the top-left.
+ * - Shows a user avatar button in the top-right corner.
+ * - Opens a dropdown menu when the avatar is clicked.
+ * - Provides a language toggle (English ↔ Gaeilge) inside the dropdown menu.
+ *
+ * Usage:
+ * <Header />
+ */
+
 const Header: React.FC = () => {
   const { i18n, t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

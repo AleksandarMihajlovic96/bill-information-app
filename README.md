@@ -1,69 +1,111 @@
-# React + TypeScript + Vite
+# 📑 Bills Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript application built with **Material-UI (MUI)** and **i18next**, designed to manage and explore bills in a clean, multilingual interface.  
 
-Currently, two official plugins are available:
+The app supports:  
+- ✅ Bill listing with filtering and pagination  
+- ✅ Bill detail modal view  
+- ✅ Favouriting functionality  
+- ✅ Tabs for All Bills vs. Favourites  
+- ✅ Language switching between **English** and **Gaeilge**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **React** (with TypeScript)  
+- **Material-UI (MUI)** for UI components  
+- **i18next** for internationalization (English / Gaeilge)  
+- **Custom styled-components** for consistent styling  
+- **React Hooks** for state and logic management  
+- **React Testing Library & Jest** for Unit testing
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ⚙️ Setup & Installation
+This project was created with **Vite** and uses **SWC** as the fast TypeScript/JS compiler.  
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository**  
+  ```bash
+   git clone https://github.com/yourusername/bills-app.git
+   cd bills-app
+  ```
+2. **Install dependecies**
+  ```bash
+  npm install
+  # or
+  yarn install
+  ```
+3. **Run the development server**
+  ```bash
+  npm run dev
+  ```
+4. **Build for production**
+  ```bash
+  npm run build
+  ```
+## 🧪 Running Tests
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Run the test suite:
+  ```bash
+  npm run test
+  ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Generate code coverage report:
+  ```bash
+  npm test --coverage
+  ```
+👉 Coverage reports will be available in the coverage/ folder and current coverage report is:
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------|---------|----------|---------|---------|-------------------
+All files             |   95.45 |    86.04 |   83.33 |   96.72 |                   
+ api/billsApi         |     100 |      100 |     100 |     100 |                   
+  billsApi.ts         |     100 |      100 |     100 |     100 |                   
+ components/BillModal |     100 |      100 |     100 |     100 |                   
+  BillModal.tsx       |     100 |      100 |     100 |     100 |                   
+ components/BillTable |   97.05 |    83.33 |    87.5 |     100 |                   
+  BillTable.style.tsx |     100 |      100 |     100 |     100 |                   
+  BillTable.tsx       |   96.15 |    83.33 |    87.5 |     100 | 53                
+ pages/BillsPage      |   88.57 |    66.66 |      50 |    90.9 |                   
+  BillsPage.styles.ts |     100 |      100 |     100 |     100 |                   
+  BillsPage.tsx       |    86.2 |    66.66 |      50 |   88.88 | 36-39             
+ shared/Dropdown      |     100 |      100 |     100 |     100 |                   
+  Dropdown.styles.ts  |     100 |      100 |     100 |     100 |                   
+  Dropdown.tsx        |     100 |      100 |     100 |     100 |                   
+ shared/Header        |   95.65 |      100 |      75 |   95.65 |                   
+  Header.styles.ts    |     100 |      100 |     100 |     100 |                   
+  Header.tsx          |   94.11 |      100 |      75 |   94.11 | 29                
+ utils                |     100 |      100 |     100 |     100 |                   
+  constants.ts        |     100 |      100 |     100 |     100 |                   
+  utils.ts            |     100 |      100 |     100 |     100 |                   
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧹 Linting & Formatting
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Run lint chech:
+```bash
+ npm run lint
+ ```
+
+ Fix lint issues automatically:
+ ```bash
+ npm run lint:fix
+ ```
+
+ Format code with Prettier:
+ ```bash
+ npm run format
+ ```
+
+ ## 🔒 Pre-commit Hooks
+ This project uses Husky to enforce code quality:
+
+- Linting and formatting run before every commit.
+
+- Commits are blocked until issues are resolved.
+
+## 🌐 Internationalization
+The app uses i18next with support for:
+
+- en → English
+
+- ga → Gaeilge
+
+To add more languages, extend the translation JSON files in the i18n configuration.

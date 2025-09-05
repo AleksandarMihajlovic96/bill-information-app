@@ -5,6 +5,24 @@ import { useTranslation } from 'react-i18next';
 import { useBills } from '../../hooks/useBills';
 import { BillsPageContainer, BillTableContainer, ErrorBox, LoadingBox } from './BillsPage.styles';
 
+/**
+ * BillsPage
+ *
+ * React functional component that serves as the main page for displaying bills.
+ * - Fetches bills from the backend using the `useBills` hook.
+ * - Manages local state for favourites, active tab, and current pagination page.
+ * - Provides two tabs All Bills and Favourites
+ * - Uses `BillTable` to render bills in a paginated and filterable table.
+ * - Allows users to toggle favourite bills, which are stored in local state.
+ *
+ * Behaviour:
+ * - When the "All Bills" tab is active, displays all fetched bills.
+ * - When the "Favourites" tab is active, only displays bills marked as favourites.
+ * - Resets pagination to the first page when switching between tabs.
+ *
+ * Usage:
+ * <BillsPage />
+ */
 const BillsPage: React.FC = () => {
   const [favourites, setFavourites] = useState<string[]>([]);
   const [tab, setTab] = useState(0);
